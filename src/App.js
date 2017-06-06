@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class BaseConverter extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="base">
+        <label> Base converter </label>
+          <input/>
+        <div>
+        <label> Base 2 </label>
+          <input/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+        <label> Base 8 </label>
+          <input/>
+        </div>
+        <div>
+        <label> Base 16 </label>
+          <input/>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default BaseConverter;
