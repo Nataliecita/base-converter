@@ -20,7 +20,6 @@ class BaseConverter extends Component {
         return {number: document.getElementById("originalNumber").value};
       })
       this.setState((prevState, props) => {
-        debugger
         return {binary: this.baseConvert(prevState.number, 2),
           octo: this.baseConvert(prevState.number, 8),
           hexa: this.baseConvert(prevState.number, 16),
