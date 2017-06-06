@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class BaseConverter extends Component {
+  constructor(){
+    super()
+    this.state = {
+      number: 0,
+      binary: 0,
+      octo: 0,
+      hexa: 0
+    }
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+  }
+
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      console.log("Enter was pressed")
+      this.setState( {
+         number: event.target.value
+      }),
+      this.setState((prevState, props) => {
+
+        return {binary: this.baseConvert(prevState.number, 2),
+          octo: this.baseConvert(prevState.number, 8),
+          hexa: this.baseConvert(prevState.number, 16),
+        };
+      })
+    }
+  }
+  baseConvert(input, base) {
+    return (input >>> 0).toString(base);
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="base">
+        <label> Base converter </label>
+          <input id="originalNumber" onKeyPress={this.handleKeyPress}/>
+          <input value={this.state.binary}/>
+          <input value={this.state.octo}/>
+          <input value={this.state.hexa}/>
       </div>
     );
   }
 }
 
-export default App;
+export default BaseConverter;
