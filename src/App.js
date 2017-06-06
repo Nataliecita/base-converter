@@ -16,10 +16,11 @@ class BaseConverter extends Component {
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       console.log("Enter was pressed")
+      this.setState( {
+         number: event.target.value
+      }),
       this.setState((prevState, props) => {
-        return {number: document.getElementById("originalNumber").value};
-      })
-      this.setState((prevState, props) => {
+
         return {binary: this.baseConvert(prevState.number, 2),
           octo: this.baseConvert(prevState.number, 8),
           hexa: this.baseConvert(prevState.number, 16),
